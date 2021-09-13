@@ -1,0 +1,28 @@
+
+/*BASE*/
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-menu {
+    background-color: #5eb5e0;
+    height: 100px;
+    width: 100%;
+}
+
+/*HOME*/
+
+.main--home {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.main--home h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 6em;
+}
