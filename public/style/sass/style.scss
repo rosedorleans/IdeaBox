@@ -10,7 +10,7 @@ body::-webkit-scrollbar-track {
     background: #d5d5d5;
 }
 body::-webkit-scrollbar-thumb {
-    background-color: #5eb5e0;
+    background-color: #7696b2;
     border-radius: 20px;
 
 }
@@ -21,7 +21,7 @@ body {
 }
 
 .navMenu {
-    background-color: #5eb5e0;
+    background-color: #7696b2;
     height: 160px;
     width: 100%;
 }
@@ -39,7 +39,7 @@ body {
 }
 
     .navMenu--links_card:hover {
-        background-color: #57a9c9;
+        background-color: #6186a1;
     }
 
 /* menu et connexion fenêtre */
@@ -170,12 +170,13 @@ input.hamburger-checkbox {
     z-index: 3;
     top: 5vh;
     left: 5vw;
-    width: 10vw;
+    height: 40px;
+    width: 40px;
     opacity: 0;
-    height: 6vh;
+    cursor: pointer;
 }
 
-
+//
 
 .flex {
     display: flex;
@@ -246,7 +247,7 @@ input.hamburger-checkbox {
 
 .main--home_button {
     cursor: pointer;
-    background-color: #5eb5e0;
+    background-color: #7696b2;
     height: 100px;
     margin: 0 30px;
     padding: 30px;
@@ -255,7 +256,7 @@ input.hamburger-checkbox {
 }
 
     .main--home_button:hover {
-        background-color: #5ea6cd;
+        background-color: #6186a1;
     }
 
 .main--home_button > a {
@@ -296,7 +297,7 @@ input.hamburger-checkbox {
     height: 330px;
     width: 365px;
     justify-self: center;
-    border: 5px solid #5ea6cd;
+    border: 5px solid #7696b2;
     padding: 20px;
     font-size: 20px;
 }
@@ -307,14 +308,14 @@ input.hamburger-checkbox {
 
 .grid_item--text {
     width: 70%;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .grid_item--img {
     height: 100%;
     display: flex;
     align-self: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .grid_item--img > a > img {
@@ -402,7 +403,7 @@ input.hamburger-checkbox {
     }
 
 .btn-blue {
-    background: #5eb5e0;
+    background: #7696b2;
     color: #FFF;
     width: 200px;
     margin: 50px auto;
@@ -415,7 +416,7 @@ input.hamburger-checkbox {
 }
 
 .btn-blue:hover {
-    background: #338db8;
+    background: #6186a1;
 }
 
 .btn-blue > a {
@@ -490,7 +491,7 @@ input.hamburger-checkbox {
 //NEW
 
 .main--ideas_new {
-    width: 25%;
+    width: 35%;
 }
 
 /* new grande fenêtre */

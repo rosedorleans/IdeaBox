@@ -17,12 +17,15 @@
                                     <h3>"{{ idea.title }}"</h3>
                                 </div>
                                 <div class="grid_item--img">
+
                                     <a href="#">
                                         <img src="{{ asset('images/like.png') }}" alt="like" onmouseover="this.src='{{ asset('images/like-fill.png') }}'" onmouseout="this.src='{{ asset('images/like.png') }}'"/>
                                     </a>
+                                    <p>0</p>
                                     <a href="#">
                                         <img src="{{ asset('images/dislike.png') }}" alt="dislike" onmouseover="this.src='{{ asset('images/dislike-fill.png') }}'" onmouseout="this.src='{{ asset('images/dislike.png') }}'"/>
                                     </a>
+                                    <p>0</p>
                                 </div>
                             </div>
                             <p>{{ idea.description }}</p>
