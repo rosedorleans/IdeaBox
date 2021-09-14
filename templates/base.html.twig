@@ -21,7 +21,7 @@
                 <a href="{{ path('idea_index') }}">Ideas</a>
                 <a href="{{ path('idea_index2') }}">Ideas2</a>
             </div>
-            <a href="#" class="connected">Connexion</a>
+            <a href="{{ path('app_login') }}" class="connected">Connexion</a>
         </nav>
         <main class="main">
             {% block body %}{% endblock %}

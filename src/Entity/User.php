@@ -139,27 +139,6 @@ class User implements UserInterface
         return $this->ideas;
     }
 
-    public function addIdea(Idea $idea): self
-    {
-        if (!$this->ideas->contains($idea)) {
-            $this->ideas[] = $idea;
-            $idea->setIdeas($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdea(Idea $idea): self
-    {
-        if ($this->ideas->removeElement($idea)) {
-            // set the owning side to null (unless already changed)
-            if ($idea->getIdeas() === $this) {
-                $idea->setIdeas(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function __toString()
     {
