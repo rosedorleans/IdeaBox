@@ -6,11 +6,33 @@
 {% block body %}
     <main class="main">
         <div class="main--ideas">
-            <h1>Idées</h1>
-            <div class="grid-container">
-{#                {% for meal in meals %}#}
-{#                    <div class="grid-item">{{ meal.name }}</div>#}
-{#                {% endfor %}#}
+            <div class="main--ideas_titles">
+                <h1>Idées</h1>
+                <h2>Nombre d'idées : {{ count }}</h2>
+            </div>
+            <div class="grid_container">
+                {% for idea in ideas %}
+
+                        <div class="grid_item">
+                            <div class="grid_item--flex">
+                                <div class="grid_item--text">
+                                    <a href="#" class="grid_item--link">
+                                        <h3>{{ idea.title }}</h3>
+                                    </a>
+                                </div>
+                                <div class="grid_item--img">
+                                    <a href="#">
+                                        <img src="{{ asset('images/like.png') }}" alt="like" onmouseover="this.src='{{ asset('images/like-fill.png') }}'" onmouseout="this.src='{{ asset('images/like.png') }}'"/>
+                                    </a>
+                                    <a href="#">
+                                        <img src="{{ asset('images/dislike.png') }}" alt="dislike" onmouseover="this.src='{{ asset('images/dislike-fill.png') }}'" onmouseout="this.src='{{ asset('images/dislike.png') }}'"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <p>{{ idea.description }}</p>
+                            {#<p>{{ idea.author }}</p>#}
+                        </div>
+                {% endfor %}
             </div>
         </div>
 

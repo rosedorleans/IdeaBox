@@ -37,9 +37,9 @@ body {
     border-radius: 10px;
 }
 
-.main--home_button:hover {
-    background-color: #5ea6cd;
-}
+    .main--home_button:hover {
+        background-color: #5ea6cd;
+    }
 
 .main--home_button > a {
     color: #FFF;
@@ -52,10 +52,58 @@ body {
 .main--ideas {
     width: 50%;
     margin: 2% auto;
+}
+
+.main--ideas_titles {
     text-align: center;
 }
 
-.main--ideas > h1 {
+.main--ideas_titles > h1 {
     font-family: 'Oswald', sans-serif;
     font-size: 5em;
+}
+
+.grid_item--link {
+    color: #000;
+    text-decoration: none;
+}
+
+    .grid_item--link:hover {
+        text-decoration: underline;
+    }
+
+.grid_container {
+    display: grid;
+    justify-content: center;
+    gap: 20px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.grid_item {
+    min-height: 230px;
+    border: 5px solid #5ea6cd;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.grid_item--flex {
+    display: flex;
+}
+
+.grid_item--text {
+    width: 70%;
+    margin-right: 30px;
+}
+
+.grid_item--img {
+    height: 100%;
+    display: flex;
+    align-self: center;
+    gap: 20px;
+}
+
+.grid_item--img > a > img {
+    height: 40px;
+    width: auto;
 }

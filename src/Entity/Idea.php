@@ -28,9 +28,13 @@ class Idea
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="ideas")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+
+
 
     public function getId(): ?int
     {
@@ -71,5 +75,22 @@ class Idea
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getIdeas(): ?User
+    {
+        return $this->ideas;
+    }
+
+    public function setIdeas(?User $ideas): self
+    {
+        $this->ideas = $ideas;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->author;
     }
 }
