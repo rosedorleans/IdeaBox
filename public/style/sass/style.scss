@@ -11,7 +11,7 @@ body {
 
 .navMenu {
     background-color: #5eb5e0;
-    height: 100px;
+    height: 130px;
     width: 100%;
 }
 
@@ -27,38 +27,59 @@ body {
     text-transform: uppercase;
     font-weight: 500;
     display: inline-block;
-    width: 125px;
+    width: 270px;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
 
     .navMenu--links a:hover {
-        color: #000;
+        color: #001258;
     }
 
-.navMenu .connected {
+.flex {
+    display: flex;
+    flex-direction: column;
+    float: right;
+}
+
+.centered {
+    justify-content: center;
+}
+
+.navMenu .right {
     color: #FFF;
     float: right;
+    text-align: right;
     font-size: 1.2em;
+    margin: 0;
     padding-right: 40px;
     text-decoration: none;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
 
-    .navMenu .connected:hover {
-        color: #000;
+    .navMenu .connexion:hover {
+        color: #001258;
     }
+
+.navMenu--connected_name > img {
+    margin: 4px 13px;
+}
+
+#deco {
+    margin-left: 196px;
+}
 
 .main {
     width: 70%;
-    margin: 5% auto;
+    margin: 2% auto;
 
 }
 
 //HOME
 
 .main--home {
+    margin-top: 150px;
     text-align: center;
 }
 
@@ -144,26 +165,155 @@ body {
     width: auto;
 }
 
-.main--ideas_new h1,
-.main--ideas_show h1,
-.main--ideas_edit h1 {
+.main--ideas_my-ideas > h1,
+.main--ideas_new > h1,
+.main--ideas_show > h1,
+.main--ideas_edit > h1 {
     font-size: 3em;
     text-align: center;
 }
 
 .main--ideas_main {
-    font-size: 1.5em;
+    font-size: 1.4em;
+}
+
+.main--ideas_edit > .main--ideas_main > form > div,
+.main--ideas_new > .main--ideas_main > form > div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.main--ideas_edit > .main--ideas_main > form > div > input,
+.main--ideas_new > .main--ideas_main > form > div > input {
+    width: 365px;
+}
+
+.main--ideas_edit > .main--ideas_main > form > div > textarea,
+.main--ideas_new > .main--ideas_main > form > div > textarea {
+    height: 150px;
+    width: 365px;
+}
+
+.main--ideas_buttons {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+
+}
+
+.main--ideas_buttons > button,
+.main--ideas_buttons > form > button {
+    background: #FFF;
+    border: none;
+    cursor: pointer;
+}
+
+.main--ideas_buttons > button > a {
+    color: #000;
+    text-decoration: none;
+}
+
+.main--ideas_buttons > button > a,
+.main--ideas_buttons > form > button {
+    font-size: 20px;
+}
+
+.main--ideas_buttons > button > a > img,
+.main--ideas_buttons > form > button > img {
+    height: 55px;
 }
 
 .main--ideas_return {
     margin-top: 50px;
+    text-align: center;
 }
+
+.main--ideas_return > a {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+    .main--ideas_return > a:hover {
+        text-decoration: underline;
+    }
+
+.btn-blue {
+    background: #5eb5e0;
+    color: #FFF;
+    width: 200px;
+    margin: 50px auto;
+    border: none;
+    border-radius: 7px;
+    padding: 10px !important;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btn-blue:hover {
+    background: #338db8;
+}
+
+.btn-blue > a {
+    color: #FFF !important;
+    text-decoration: none;
+}
+
+.btn-blue > a:hover {
+    text-decoration: none !important;
+}
+
+
+.main--ideas_my-ideas,
+.main--ideas_new,
+.main--ideas_show,
+.main--ideas_edit {
+    margin: 0 auto;
+}
+
+
+//MY IDEAS
+
+.main--ideas_my-ideas {
+    width: 60%;
+}
+
+.main--ideas_my-ideas > table,
+.main--ideas_show > .main--ideas_main > table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.main--ideas_my-ideas > table > thead > tr > th,
+.main--ideas_my-ideas > table > tbody > tr > td,
+.main--ideas_show > .main--ideas_main > table > thead > tr > th,
+.main--ideas_show > .main--ideas_main > table > tbody > tr > td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.main--ideas_my-ideas > table > thead > tr > th {
+    font-size: 21px;
+}
+
+.main--ideas_my-ideas > table > tbody > tr > td {
+    font-size: 19px;
+}
+
+.main--ideas_my-ideas > table > tbody > tr > td > a {
+    color: #000;
+}
+
 
 //NEW
 
 .main--ideas_new {
     width: 25%;
-    margin: 0 auto;
 }
 
 
@@ -171,12 +321,14 @@ body {
 
 .main--ideas_show {
     width: 35%;
-    margin: 0 auto;
 }
 
 //EDIT
 
 .main--ideas_edit {
     width: 25%;
-    margin: 0 auto;
+}
+
+.main--ideas_edit > .main--ideas_main > form > div {
+    font-size: 30px;
 }

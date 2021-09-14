@@ -16,12 +16,24 @@
     </head>
     <body>
         <nav class="navMenu">
-            <div class="navMenu--links">
-                <a href="{{ path('home') }}">Home</a>
-                <a href="{{ path('idea_index') }}">Ideas</a>
-                <a href="{{ path('idea_index2') }}">Ideas2</a>
-            </div>
-            <a href="{{ path('app_login') }}" class="connected">Connexion</a>
+            {% if app.user %}
+                <div class="navMenu--links">
+                    <a href="{{ path('idea_index') }}">Toutes les idées</a>
+                    <a href="{{ path('my_ideas') }}">Mes idées</a>
+                </div>
+                <div class="flex">
+                    <div class="navMenu--connected_name">
+                        <img src="{{ asset('images/connected-icon.png') }}" alt="connected" height="15px">
+                        <p class="right connected">Connecté avec {{ app.user.email }}</p>
+                    </div>
+                    <a href="{{ url('app_logout') }}" class="right connected connexion" id="deco">Deconnexion</a>
+                </div>
+            {% else %}
+                <div class="flex">
+                    <p class="right">Vous n'êtes pas connecté</p>
+                    <a href="{{ path('app_login') }}" class="right connexion">Connexion</a>
+                </div>
+            {% endif %}
         </nav>
         <main class="main">
             {% block body %}{% endblock %}

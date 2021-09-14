@@ -10,12 +10,14 @@
                 {{ form_row(form.title, { 'label': 'Titre' }) }}
                 {{ form_row(form.description, { 'label': 'Description' }) }}
                 {{ form_row(form.author, { 'label': 'Auteur' }) }}
-                <button type="submit">Ajouter</button>
+                <div class="centered">
+                    <button type="submit" class="btn-blue">Ajouter</button>
+                </div>
             {{ form_end(form) }}
 
-            <button class="main--ideas_return">
-                <a href="{{ path('idea_index') }}">Retour aux idées</a>
-            </button>
+            <div class="main--ideas_return btn-blue">
+                <a href="{{ path('my_ideas') }}">Retour</a>
+            </div>
         </div>
     </div>
 {% endblock %}

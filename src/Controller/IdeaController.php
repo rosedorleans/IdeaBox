@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Idea;
+use App\Entity\Outing;
+use App\Entity\User;
 use App\Form\IdeaType;
 use App\Repository\IdeaRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,12 +44,14 @@ class IdeaController extends AbstractController
     }
 
     /**
-     * @Route("/index", name="idea_index2", methods={"GET"})
+     * @Route("/index", name="my_ideas", methods={"GET"})
      */
-    public function index2(IdeaRepository $ideaRepository): Response
+    public function index2(IdeaRepository $ideaRepository, EntityManagerInterface $entityManager): Response
     {
+        $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $this->getUser()->getEmail()]);
+        $ideas = $entityManager->getRepository(Idea::class)->findBy(['author' => $user]);
         return $this->render('idea/index.html.twig', [
-            'ideas' => $ideaRepository->findAll(),
+            'ideas' => $ideas,
         ]);
     }
 

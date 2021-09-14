@@ -9,13 +9,17 @@
         <div class="main--ideas_main">
             {{ form_start(form) }}
                 {{ form_rest(form) }}
-            <button type="submit">Modifier</button>
-            {{ include('idea/_delete_form.html.twig') }}
+            <div class="main--ideas_buttons">
+                <button type="submit">
+                    <img src="{{ asset('images/checked.png') }}" alt="checked" onmouseover="this.src='{{ asset('images/checked-fill.png') }}'" onmouseout="this.src='{{ asset('images/checked.png') }}'"/>
+                </button>
+                {{ include('idea/_delete_form.html.twig') }}
+            </div>
             {{ form_end(form) }}
 
-            <button class="main--ideas_return">
-                <a href="{{ path('idea_index') }}">Retour aux idées</a>
-            </button>
+            <div class="main--ideas_return btn-blue">
+                <a href="{{ path('my_ideas') }}">Retour</a>
+            </div>
 
 
         </div>

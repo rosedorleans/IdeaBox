@@ -22,6 +22,7 @@ class IdeaType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Idea::class,
+            'translation_domain' => 'forms'
         ]);
     }
 }
