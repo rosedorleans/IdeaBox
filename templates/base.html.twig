@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>
-            {% block title %}{% endblock %}
+            IdeaBox | {% block title %}{% endblock %}
         </title>
 
         {% block stylesheets %}
@@ -17,11 +17,37 @@
     <body>
         <nav class="navMenu">
             {% if app.user %}
-                <div class="navMenu--links">
-                    <a href="{{ path('idea_index') }}">Toutes les idées</a>
-                    <a href="{{ path('my_ideas') }}">Mes idées</a>
+                {# menu mobile #}
+                <input type="checkbox" id="openmenu" class="hamburger-checkbox">
+                <div class="hamburger-icon">
+                    <label for="openmenu" id="hamburger-label">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
                 </div>
-                <div class="flex">
+                <div class="menu-pane">
+                    <nav>
+                        <div class="navMenu--links_card-mobile">
+                            <a href="{{ path('idea_index') }}">Toutes les idées</a>
+                        </div>
+                        <div class="navMenu--links_card-mobile">
+                            <a href="{{ path('my_ideas') }}">Mes idées</a>
+                        </div>
+                    </nav>
+                </div>
+
+                {# menu laptop #}
+                <div class="navMenu--links">
+                    <div class="navMenu--links_card">
+                        <a href="{{ path('idea_index') }}">Toutes les idées</a>
+                    </div>
+                    <div class="navMenu--links_card">
+                        <a href="{{ path('my_ideas') }}">Mes idées</a>
+                    </div>
+                </div>
+                <div class="navMenu--links_user flex">
                     <div class="navMenu--connected_name">
                         <img src="{{ asset('images/connected-icon.png') }}" alt="connected" height="15px">
                         <p class="right connected">Connecté avec {{ app.user.email }}</p>
