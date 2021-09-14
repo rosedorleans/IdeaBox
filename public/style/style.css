@@ -1,109 +1,167 @@
-
-/*BASE*/
-
-@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap");
 body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
-.main-menu {
-    background-color: #5eb5e0;
-    height: 100px;
-    width: 100%;
+.navMenu {
+  background-color: #5eb5e0;
+  height: 100px;
+  width: 100%;
 }
 
-/*HOME*/
+.navMenu--links {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.navMenu--links a {
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  width: 125px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu--links a:hover {
+  color: #000;
+}
+
+.navMenu .connected {
+  color: #FFF;
+  float: right;
+  font-size: 1.2em;
+  padding-right: 40px;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.navMenu .connected:hover {
+  color: #000;
+}
+
+.main {
+  width: 70%;
+  margin: 5% auto;
+}
 
 .main--home {
-    width: 50%;
-    margin: 10% auto;
-    text-align: center;
+  text-align: center;
 }
 
 .main--home > h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 7em;
+  font-family: "Oswald", sans-serif;
+  font-size: 7em;
 }
 
 .main--home_button {
-    cursor: pointer;
-    background-color: #5eb5e0;
-    height: 100px;
-    margin: 0 30px;
-    padding: 30px;
-    border: none;
-    border-radius: 10px;
+  cursor: pointer;
+  background-color: #5eb5e0;
+  height: 100px;
+  margin: 0 30px;
+  padding: 30px;
+  border: none;
+  border-radius: 10px;
 }
 
-    .main--home_button:hover {
-        background-color: #5ea6cd;
-    }
+.main--home_button:hover {
+  background-color: #5ea6cd;
+}
 
 .main--home_button > a {
-    color: #FFF;
-    font-size: 1.7em;
-    text-decoration: none;
-}
-
-/*IDEAS*/
-
-.main--ideas {
-    width: 50%;
-    margin: 2% auto;
+  color: #FFF;
+  font-size: 1.7em;
+  text-decoration: none;
 }
 
 .main--ideas_titles {
-    text-align: center;
+  text-align: center;
 }
 
 .main--ideas_titles > h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 5em;
+  font-family: "Oswald", sans-serif;
+  font-size: 5em;
 }
 
 .grid_item--link {
-    color: #000;
-    text-decoration: none;
+  color: #000;
+  text-decoration: none;
 }
 
-    .grid_item--link:hover {
-        text-decoration: underline;
-    }
+.grid_item--link:hover {
+  text-decoration: underline;
+}
 
 .grid_container {
-    display: grid;
-    justify-content: center;
-    gap: 20px;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
 }
 
 .grid_item {
-    min-height: 230px;
-    border: 5px solid #5ea6cd;
-    padding: 20px;
-    font-size: 20px;
+  height: 330px;
+  width: 365px;
+  border: 5px solid #5ea6cd;
+  padding: 20px;
+  font-size: 20px;
 }
 
 .grid_item--flex {
-    display: flex;
+  display: flex;
 }
 
 .grid_item--text {
-    width: 70%;
-    margin-right: 30px;
+  width: 70%;
+  margin-right: 30px;
 }
 
 .grid_item--img {
-    height: 100%;
-    display: flex;
-    align-self: center;
-    gap: 20px;
+  height: 100%;
+  display: flex;
+  align-self: center;
+  gap: 20px;
 }
 
 .grid_item--img > a > img {
-    height: 40px;
-    width: auto;
+  height: 40px;
+  width: auto;
 }
+
+.main--ideas_new h1,
+.main--ideas_show h1,
+.main--ideas_edit h1 {
+  font-size: 3em;
+  text-align: center;
+}
+
+.main--ideas_main {
+  font-size: 1.5em;
+}
+
+.main--ideas_return {
+  margin-top: 50px;
+}
+
+.main--ideas_new {
+  width: 25%;
+  margin: 0 auto;
+}
+
+.main--ideas_show {
+  width: 35%;
+  margin: 0 auto;
+}
+
+.main--ideas_edit {
+  width: 25%;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=style.css.map */

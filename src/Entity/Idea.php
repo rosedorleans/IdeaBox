@@ -77,17 +77,6 @@ class Idea
         return $this;
     }
 
-    public function getIdeas(): ?User
-    {
-        return $this->ideas;
-    }
-
-    public function setIdeas(?User $ideas): self
-    {
-        $this->ideas = $ideas;
-
-        return $this;
-    }
 
     public function __toString()
     {

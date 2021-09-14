@@ -161,33 +161,10 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Idea[]
-     */
-    public function getAuthor(): Collection
+    public function __toString()
     {
-        return $this->author;
+        return $this->email;
     }
 
-    public function addAuthor(Idea $author): self
-    {
-        if (!$this->author->contains($author)) {
-            $this->author[] = $author;
-            $author->setAuthor($this);
-        }
 
-        return $this;
-    }
-
-    public function removeAuthor(Idea $author): self
-    {
-        if ($this->author->removeElement($author)) {
-            // set the owning side to null (unless already changed)
-            if ($author->getAuthor() === $this) {
-                $author->setAuthor(null);
-            }
-        }
-
-        return $this;
-    }
 }

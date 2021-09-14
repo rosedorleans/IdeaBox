@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Idée{% endblock %}
+
+{% block body %}
+    <div class="main--ideas_new">
+        <h1>Ajouter une nouvelle idée</h1>
+        <div class="main--ideas_main">
+            {{ form_start(form) }}
+                {{ form_row(form.title, { 'label': 'Titre' }) }}
+                {{ form_row(form.description, { 'label': 'Description' }) }}
+                {{ form_row(form.author, { 'label': 'Auteur' }) }}
+                <button type="submit">Ajouter</button>
+            {{ form_end(form) }}
+
+            <button class="main--ideas_return">
+                <a href="{{ path('idea_index') }}">Retour aux idées</a>
+            </button>
+        </div>
+    </div>
+{% endblock %}
