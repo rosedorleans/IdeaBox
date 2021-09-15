@@ -260,6 +260,31 @@ input.hamburger-checkbox {
 }
 
 
+/////////////////////////////////////////////////
+
+
+
+//LOGIN
+
+
+.main--login {
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* login fenêtre */
+@media only screen and (max-width : 1200px){
+
+    .main--login {
+        width: 75% !important;
+    }
+}
+
+
 
 /////////////////////////////////////////////////
 
@@ -268,7 +293,7 @@ input.hamburger-checkbox {
 //HOME
 
 .main--home {
-    margin-top: 150px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -472,6 +497,7 @@ input.hamburger-checkbox {
 
 .two {
     display: flex;
+    flex-direction: row !important;
     gap: 20px;
     margin: 20px 0 0 !important;
     justify-content: center;
@@ -602,7 +628,7 @@ input.hamburger-checkbox {
 //NEW
 
 .main--ideas_new {
-    width: 35%;
+    width: 25%;
 }
 
 //SHOW

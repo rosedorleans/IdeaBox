@@ -73,10 +73,12 @@ class IdeaController extends AbstractController
             }
             $manager->persist($user);
             $manager->flush();
-            return $this->json([
-                'code' => 200,
-                'message' => 'Like bien ajouté',
-            ], 200);
+            return $this->redirectToRoute('idea_index');
+//            return $this->json([
+//                'code' => 200,
+//                'message' => 'Like bien ajouté',
+//                'likes' => $ideaRepository->count()
+//            ], 200);
         }
         return $this->redirectToRoute('app_login');
     }
@@ -104,10 +106,12 @@ class IdeaController extends AbstractController
             }
             $manager->persist($idea);
             $manager->flush();
-            return $this->json([
-                'code' => 200,
-                'message' => 'Like bien supprime',
-            ], 200);
+            return $this->redirectToRoute('idea_index');
+//            return $this->json([
+//                'code' => 200,
+//                'message' => 'Like bien supprime',
+//                'likes' => $ideaRepository->count()
+//            ], 200);
         }
         return $this->redirectToRoute('app_login');
     }
@@ -169,7 +173,7 @@ class IdeaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('idea_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('my_ideas', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('idea/edit.html.twig', [
@@ -189,6 +193,6 @@ class IdeaController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('idea_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('my_ideas', [], Response::HTTP_SEE_OTHER);
     }
 }

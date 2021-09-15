@@ -10,9 +10,7 @@
             <link rel="stylesheet" href="{{ asset('style/style.css') }}">
         {% endblock %}
 
-        {% block javascripts %}
 
-        {% endblock %}
     </head>
     <body>
         <nav class="navMenu">
@@ -64,5 +62,6 @@
         <main class="main">
             {% block body %}{% endblock %}
         </main>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
