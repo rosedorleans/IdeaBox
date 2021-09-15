@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="FR">
     <head>
         <meta charset="UTF-8">
         <title>
@@ -50,9 +50,9 @@
                 <div class="navMenu--links_user flex">
                     <div class="navMenu--connected_name">
                         <img src="{{ asset('images/connected-icon.png') }}" alt="connected" height="15px">
-                        <p class="right connected">Connecté avec {{ app.user.email }}</p>
+                        <p class="connected">Connecté avec {{ app.user.pseudo }}</p>
                     </div>
-                    <a href="{{ url('app_logout') }}" class="right connected connexion" id="deco">Deconnexion</a>
+                    <a href="{{ url('app_logout') }}" class="right connected connexion" id="deco">Déconnexion</a>
                 </div>
             {% else %}
                 <div class="flex">

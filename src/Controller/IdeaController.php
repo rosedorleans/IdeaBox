@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Idea;
-use App\Entity\Outing;
+use App\Entity\IdeaLike;
 use App\Entity\User;
 use App\Form\IdeaType;
+use App\Repository\IdeaLikeRepository;
 use App\Repository\IdeaRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +44,61 @@ class IdeaController extends AbstractController
             'count' => $count
         ]);
     }
+
+//    /**
+//     * Permet de liker et disliker une idée
+//     * @Route ("/{id}/like", name="idea_like")
+//     * @param Idea $idea
+//     * @param IdeaLikeRepository $likeRepository
+//     * @return Response
+//     */
+//    public function like(Idea $idea, ObjectManager $manager, IdeaLikeRepository $likeRepository): Response {
+//
+//        $user = $this->getUser();
+//
+////      Si l'utilisateur n'est pas connecté (user=null)
+////      Retourner un message d'erreur
+//        if (!$user) return $this->json([
+//            'code' => 403,
+//            'message' => 'Unauthorized'
+//        ], 403);
+//
+////      Si l'utilisateur a liké l'idée
+//        if ($idea->isLikedByUser($user)) {
+//            $like = $likeRepository->findOneBy([
+//                'idea' => $idea,
+//                'user' => $user
+//            ]);
+//
+////          Enlever le like
+//            $manager->remove($like);
+//            $manager->flush();
+//
+////          Retourner un message de succes
+//            return $this->json([
+//                'code' => 200,
+//                'message' => 'Like bien supprime',
+//                'likes' => $likeRepository->count(['idea' => $idea])
+//            ], 200);
+//        }
+//
+////      Ajouter un like
+//        $like = new IdeaLike();
+//        $like->setIdea($idea)
+//             ->getUser($user);
+//
+//        $manager->persist($like);
+//        $manager->flush();
+//
+////      Retourner un message de succes
+//        return $this->json([
+//            'code' => 200,
+//            'message' => 'Like bien ajoute',
+//            'likes' => $likeRepository->count(['idea' => $idea])
+//        ], 200);
+//
+//    }
+
 
     /**
      * @Route("/index", name="my_ideas", methods={"GET"})

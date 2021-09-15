@@ -20,7 +20,7 @@ body {
 
 .navMenu {
   background-color: #7696b2;
-  height: 160px;
+  height: 170px;
   width: 100%;
 }
 
@@ -41,7 +41,7 @@ body {
 }
 
 /* menu et connexion fenêtre */
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1300px) {
   .navMenu {
     height: 200px;
   }
@@ -51,13 +51,17 @@ body {
   }
 }
 /* menu et connexion mobile */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .navMenu--links {
     background-color: red;
     display: none;
   }
 
   .hamburger-icon {
+    display: block !important;
+  }
+
+  div.menu-pane {
     display: block !important;
   }
 }
@@ -119,6 +123,7 @@ body {
 }
 
 div.menu-pane {
+  display: none;
   background-color: #e6f6ff;
   position: absolute;
   transform: translateX(-105vw);
@@ -191,6 +196,21 @@ input.hamburger-checkbox {
 
 .navMenu .connexion:hover {
   color: #001258;
+}
+
+.navMenu--connected_name {
+  display: flex;
+  justify-content: right;
+  padding-right: 40px;
+}
+
+.navMenu--connected_name > p {
+  color: #FFF;
+  font-size: 1.2em;
+  margin: 0;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .navMenu--connected_name > img {
@@ -292,14 +312,18 @@ input.hamburger-checkbox {
   margin-right: 20px;
 }
 
-.grid_item--img {
+.grid_item--likes {
   height: 100%;
   display: flex;
   align-self: center;
   gap: 10px;
 }
 
-.grid_item--img > a > img {
+.grid_item--likes > p {
+  font-weight: bold;
+}
+
+.grid_item--likes > a > img {
   height: 40px;
   width: auto;
 }
@@ -407,6 +431,13 @@ input.hamburger-checkbox {
   text-decoration: none !important;
 }
 
+.two {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0 0 !important;
+  justify-content: center;
+}
+
 .main--ideas_my-ideas,
 .main--ideas_new,
 .main--ideas_show,
@@ -428,6 +459,12 @@ input.hamburger-checkbox {
 @media only screen and (max-width: 900px) {
   .main--ideas_my-ideas {
     width: 90%;
+  }
+}
+/* mes idées mobile */
+@media only screen and (max-width: 700px) {
+  .main--ideas_my-ideas {
+    width: 100%;
   }
 }
 .main--ideas_my-ideas > table,
@@ -455,59 +492,51 @@ input.hamburger-checkbox {
 
 .main--ideas_my-ideas > table > tbody > tr > td > a {
   color: #000;
+  text-decoration: none;
 }
 
+.main--ideas_my-ideas > table > tbody > tr > td > a:hover {
+  text-decoration: underline;
+}
+
+/* crud grande fenêtre */
+@media only screen and (max-width: 1300px) {
+  .main--ideas_new,
+.main--ideas_show,
+.main--ideas_edit {
+    width: 50%;
+  }
+}
+/* crud fenêtre */
+@media only screen and (max-width: 900px) {
+  .main--ideas_new,
+.main--ideas_show,
+.main--ideas_edit {
+    width: 70%;
+  }
+}
+/* edit mobile */
+@media only screen and (max-width: 700px) {
+  .main--ideas_new,
+.main--ideas_show,
+.main--ideas_edit {
+    width: 90%;
+  }
+}
 .main--ideas_new {
   width: 35%;
 }
 
-/* new grande fenêtre */
-@media only screen and (max-width: 1300px) {
-  .main--ideas_new {
-    width: 50%;
-  }
-}
-/* new fenêtre */
-@media only screen and (max-width: 900px) {
-  .main--ideas_new {
-    width: 75%;
-  }
-}
 .main--ideas_show {
   width: 40%;
 }
 
-/* show grande fenêtre */
-@media only screen and (max-width: 1200px) {
-  .main--ideas_show {
-    width: 50%;
-  }
-}
-/* show fenêtre */
-@media only screen and (max-width: 900px) {
-  .main--ideas_show {
-    width: 75%;
-  }
-}
 .main--ideas_edit {
   width: 25%;
 }
 
 .main--ideas_edit > .main--ideas_main > form > div {
   font-size: 30px;
-}
-
-/* edit grande fenêtre */
-@media only screen and (max-width: 1200px) {
-  .main--ideas_edit {
-    width: 50%;
-  }
-}
-/* edit fenêtre */
-@media only screen and (max-width: 900px) {
-  .main--ideas_edit {
-    width: 70%;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

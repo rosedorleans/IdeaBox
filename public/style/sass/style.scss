@@ -1,4 +1,5 @@
 
+
 //BASE
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
@@ -22,7 +23,7 @@ body {
 
 .navMenu {
     background-color: #7696b2;
-    height: 160px;
+    height: 170px;
     width: 100%;
 }
 
@@ -43,7 +44,7 @@ body {
     }
 
 /* menu et connexion fenêtre */
-@media only screen and (max-width : 1250px){
+@media only screen and (max-width : 1300px){
 
     .navMenu {
         height: 200px;
@@ -55,7 +56,7 @@ body {
 }
 
 /* menu et connexion mobile */
-@media only screen and (max-width : 600px){
+@media only screen and (max-width : 700px){
 
     .navMenu--links {
         background-color: red;
@@ -63,6 +64,10 @@ body {
     }
 
     .hamburger-icon {
+        display: block !important;
+    }
+
+    div.menu-pane {
         display: block !important;
     }
 }
@@ -77,6 +82,8 @@ body {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
+
+
 
 
 //menu mobile
@@ -128,6 +135,7 @@ body {
 }
 
 div.menu-pane {
+    display: none;
     background-color: #e6f6ff;
     position: absolute;
     transform: translateX(-105vw);
@@ -176,7 +184,7 @@ input.hamburger-checkbox {
     cursor: pointer;
 }
 
-//
+//fin menu mobile
 
 .flex {
     display: flex;
@@ -203,6 +211,21 @@ input.hamburger-checkbox {
     .navMenu .connexion:hover {
         color: #001258;
     }
+
+.navMenu--connected_name {
+    display: flex;
+    justify-content: right;
+    padding-right: 40px;
+}
+
+.navMenu--connected_name > p {
+    color: #FFF;
+    font-size: 1.2em;
+    margin: 0;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
 
 .navMenu--connected_name > img {
     margin: 4px 13px;
@@ -232,6 +255,12 @@ input.hamburger-checkbox {
         width: 100%;
     }
 }
+
+
+
+/////////////////////////////////////////////////
+
+
 
 //HOME
 
@@ -264,6 +293,12 @@ input.hamburger-checkbox {
     font-size: 1.7em;
     text-decoration: none;
 }
+
+
+
+/////////////////////////////////////////////////
+
+
 
 //IDEAS
 
@@ -311,14 +346,18 @@ input.hamburger-checkbox {
     margin-right: 20px;
 }
 
-.grid_item--img {
+.grid_item--likes {
     height: 100%;
     display: flex;
     align-self: center;
     gap: 10px;
 }
 
-.grid_item--img > a > img {
+.grid_item--likes > p {
+    font-weight: bold;
+}
+
+.grid_item--likes > a > img {
     height: 40px;
     width: auto;
 }
@@ -428,6 +467,13 @@ input.hamburger-checkbox {
     text-decoration: none !important;
 }
 
+.two {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0 0 !important;
+    justify-content: center;
+}
+
 
 .main--ideas_my-ideas,
 .main--ideas_new,
@@ -435,6 +481,11 @@ input.hamburger-checkbox {
 .main--ideas_edit {
     margin: 0 auto;
 }
+
+
+
+/////////////////////////////////////////////////
+
 
 
 //MY IDEAS
@@ -456,6 +507,14 @@ input.hamburger-checkbox {
 
     .main--ideas_my-ideas {
         width: 90%;
+    }
+}
+
+/* mes idées mobile */
+@media only screen and (max-width : 700px){
+
+    .main--ideas_my-ideas {
+        width: 100%;
     }
 }
 
@@ -484,8 +543,57 @@ input.hamburger-checkbox {
 
 .main--ideas_my-ideas > table > tbody > tr > td > a {
     color: #000;
+    text-decoration: none;
 }
 
+    .main--ideas_my-ideas > table > tbody > tr > td > a:hover {
+        text-decoration: underline;
+    }
+
+
+
+/////////////////////////////////////////////////
+
+
+
+//CRUD
+
+//Responsive
+
+/* crud grande fenêtre */
+@media only screen and (max-width : 1300px){
+
+    .main--ideas_new,
+    .main--ideas_show,
+    .main--ideas_edit  {
+        width: 50%;
+    }
+
+
+}
+
+/* crud fenêtre */
+@media only screen and (max-width : 900px){
+
+    .main--ideas_new,
+    .main--ideas_show,
+    .main--ideas_edit  {
+        width: 70%;
+    }
+
+
+}
+
+/* edit mobile */
+@media only screen and (max-width : 700px){
+
+    .main--ideas_new,
+    .main--ideas_show,
+    .main--ideas_edit {
+        width: 90%;
+    }
+
+}
 
 
 //NEW
@@ -494,46 +602,11 @@ input.hamburger-checkbox {
     width: 35%;
 }
 
-/* new grande fenêtre */
-@media only screen and (max-width : 1300px){
-
-    .main--ideas_new  {
-        width: 50%;
-    }
-}
-
-/* new fenêtre */
-@media only screen and (max-width : 900px){
-
-    .main--ideas_new  {
-        width: 75%;
-    }
-}
-
-
-
 //SHOW
 
 .main--ideas_show {
     width: 40%;
 }
-
-/* show grande fenêtre */
-@media only screen and (max-width : 1200px){
-
-    .main--ideas_show  {
-        width: 50%;
-    }
-}
-
-/* show fenêtre */
-@media only screen and (max-width : 900px){
-
-    .main--ideas_show  {
-        width: 75%;
-    }
-}
-
 
 //EDIT
 
@@ -545,18 +618,5 @@ input.hamburger-checkbox {
     font-size: 30px;
 }
 
-/* edit grande fenêtre */
-@media only screen and (max-width : 1200px){
 
-    .main--ideas_edit  {
-        width: 50%;
-    }
-}
 
-/* edit fenêtre */
-@media only screen and (max-width : 900px){
-
-    .main--ideas_edit  {
-        width: 70%;
-    }
-}

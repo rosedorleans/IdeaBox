@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\IdeaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,16 @@ class Idea
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    /**
+     * @ORM\OneToMany(targetEntity=IdeaLike::class, mappedBy="idea")
+     */
+    private $likes;
+
+    public function __construct()
+    {
+        $this->likes = new ArrayCollection();
+    }
 
 
 
@@ -75,6 +87,49 @@ class Idea
         $this->author = $author;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|IdeaLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(IdeaLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setIdea($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(IdeaLike $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getIdea() === $this) {
+                $like->setIdea(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * Permet de savoir si l'idée est likée par l'utilisateur connecté
+     * @param User $user
+     * @return bool
+     */
+    public function isLikedByUser(User $user): bool {
+        foreach ($this->likes as $like) {
+            if ($like->getUser() === $user) return true;
+        }
+        return false;
     }
 
 

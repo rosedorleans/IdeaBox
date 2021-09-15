@@ -31,9 +31,14 @@
             {% endfor %}
             </tbody>
         </table>
-
-        <div class="main--ideas_return btn-blue">
-            <a href="{{ path('idea_new') }}">Ajouter une idée</a>
+        <div class="main--ideas_return two">
+            <div class="btn-blue two">
+                <a href="{{ path('idea_index') }}">Retour</a>
+            </div>
+            <div class="btn-blue two">
+                <img src="{{ asset('images/plus-fill.png') }}" alt="plus" height="20px">
+                <a href="{{ path('idea_new') }}">Ajouter une idée</a>
+            </div>
         </div>
     </div>
 {% endblock %}
