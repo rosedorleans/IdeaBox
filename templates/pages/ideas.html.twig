@@ -29,7 +29,7 @@
 
                                     {# Si l'utilisateur est connecté et qu'il n'a pas liké l'idée #}
                                     {% elseif app.user %}
-                                        <a href="#" class="js-like">
+                                        <a href="{{ path('idea_like', {'id': idea.id}) }}" class="js-like">
                                             <img src="{{ asset('images/like.png') }}" alt="like" onmouseover="this.src='{{ asset('images/like-fill.png') }}'" onmouseout="this.src='{{ asset('images/like.png') }}'"/>
                                         </a>
                                         <p>{{ idea.likes | length }}</p>
