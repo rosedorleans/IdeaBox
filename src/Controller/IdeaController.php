@@ -26,22 +26,27 @@ class IdeaController extends AbstractController
      */
     private $repository;
 
-    public function __construct(IdeaRepository $repository) {
+    public function __construct(IdeaRepository $repository)
+    {
 
         $this->repository = $repository;
     }
+
     /**
      * @Route("/", name="idea_index")
      * @return Response
      */
-    public function index(IdeaRepository $ideaRepository): Response {
+    public function index(IdeaRepository $ideaRepository, EntityManagerInterface $manager): Response
+    {
 
         $ideas = $this->repository->findAll();
         $count = count($ideas);
-
+        if ($this->getUser()) {
+            $user = $manager->getRepository('App:User')->findOneBy(['email' => $this->getUser()->getUsername()]);
+        }
         return $this->render('pages/ideas.html.twig', [
             'ideas' => $ideas,
-            'count' => $count
+            'count' => $count,
         ]);
     }
 
@@ -71,6 +76,37 @@ class IdeaController extends AbstractController
             return $this->json([
                 'code' => 200,
                 'message' => 'Like bien ajouté',
+            ], 200);
+        }
+        return $this->redirectToRoute('app_login');
+    }
+
+    /**
+     * @param Idea $idea
+     * @param EntityManagerInterface $manager
+     * @param IdeaRepository $ideaRepository
+     * @param Request $request
+     * @return Response
+     * @Route ("/{id}/dislike", name="idea_dislike")
+     */
+    public function dislike(Idea $idea, EntityManagerInterface $manager, IdeaRepository $ideaRepository, Request $request): Response
+    {
+        if($this->getUser()){
+            $user = $manager->getRepository('App:User')->findOneBy(['email' => $this->getUser()->getUsername()]);
+
+            $idea = $manager->getRepository(Idea::class)->findOneBy(['id' => $request->get('id') ]);
+            $user->addDislike($idea);
+            foreach ($user->getDislike() as $dislike){
+                if($dislike === $idea){
+                    $user->removeLike($idea);
+                    $manager->persist($user);
+                }
+            }
+            $manager->persist($idea);
+            $manager->flush();
+            return $this->json([
+                'code' => 200,
+                'message' => 'Like bien supprime',
             ], 200);
         }
         return $this->redirectToRoute('app_login');
@@ -147,7 +183,7 @@ class IdeaController extends AbstractController
      */
     public function delete(Request $request, Idea $idea): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$idea->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $idea->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($idea);
             $entityManager->flush();

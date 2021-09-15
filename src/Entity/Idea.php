@@ -36,7 +36,7 @@ class Idea
     private $author;
 
     /**
-     * @ORM\OneToMany(targetEntity=IdeaLike::class, mappedBy="idea")
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="likes")
      */
     private $users;
 

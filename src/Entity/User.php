@@ -41,15 +41,25 @@ class User implements UserInterface
      */
     private $ideas;
 
-    /**
-     * @ORM\OneToMany(targetEntity=IdeaLike::class, mappedBy="user")
-     */
-    private $likes;
+//    /**
+//     * @ORM\OneToMany(targetEntity=IdeaLike::class, mappedBy="user")
+//     */
+//    private $likes;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $pseudo;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Idea::class, inversedBy="users")
+     */
+    private $likes;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Idea::class, mappedBy="dislike")
+     */
+    private $dislike;
 
 
 
@@ -59,6 +69,7 @@ class User implements UserInterface
         $this->ideas = new ArrayCollection();
         $this->author = new ArrayCollection();
         $this->likes = new ArrayCollection();
+        $this->dislike = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -156,35 +167,6 @@ class User implements UserInterface
         return $this->email;
     }
 
-    /**
-     * @return Collection|IdeaLike[]
-     */
-    public function getLikes(): Collection
-    {
-        return $this->likes;
-    }
-
-    public function addLike(IdeaLike $like): self
-    {
-        if (!$this->likes->contains($like)) {
-            $this->likes[] = $like;
-            $like->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLike(IdeaLike $like): self
-    {
-        if ($this->likes->removeElement($like)) {
-            // set the owning side to null (unless already changed)
-            if ($like->getUser() === $this) {
-                $like->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getPseudo(): ?string
     {
@@ -197,6 +179,58 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|Idea[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Idea $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Idea $like): self
+    {
+        $this->likes->removeElement($like);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Idea[]
+     */
+    public function getDislike(): Collection
+    {
+        return $this->dislike;
+    }
+
+    public function addDislike(Idea $dislike): self
+    {
+        if (!$this->dislike->contains($dislike)) {
+            $this->dislike[] = $dislike;
+            $dislike->addDislike($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDislike(Idea $dislike): self
+    {
+        if ($this->dislike->removeElement($dislike)) {
+            $dislike->removeDislike($this);
+        }
+
+        return $this;
+    }
+
 
 
 }
