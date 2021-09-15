@@ -38,11 +38,18 @@ class Idea
     /**
      * @ORM\OneToMany(targetEntity=IdeaLike::class, mappedBy="idea")
      */
-    private $likes;
+    private $users;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="dislike")
+     */
+    private $dislike;
+
 
     public function __construct()
     {
-        $this->likes = new ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->dislike = new ArrayCollection();
     }
 
 
@@ -90,30 +97,26 @@ class Idea
     }
 
     /**
-     * @return Collection|IdeaLike[]
+     * @return Collection|User[]
      */
-    public function getLikes(): Collection
+    public function getUsers(): Collection
     {
-        return $this->likes;
+        return $this->users;
     }
 
-    public function addLike(IdeaLike $like): self
+    public function addUser(User $user): self
     {
-        if (!$this->likes->contains($like)) {
-            $this->likes[] = $like;
-            $like->setIdea($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
         }
 
         return $this;
     }
 
-    public function removeLike(IdeaLike $like): self
+    public function removeUser(User $user): self
     {
-        if ($this->likes->removeElement($like)) {
-            // set the owning side to null (unless already changed)
-            if ($like->getIdea() === $this) {
-                $like->setIdea(null);
-            }
+        if ($this->users->removeElement($user)) {
+            $user->removeLike($this);
         }
 
         return $this;
@@ -122,15 +125,52 @@ class Idea
 
     /**
      * Permet de savoir si l'idée est likée par l'utilisateur connecté
-     * @param User $user
+     * @param User $userEntity
      * @return bool
      */
-    public function isLikedByUser(User $user): bool {
-        foreach ($this->likes as $like) {
-            if ($like->getUser() === $user) return true;
+    public function isLikedByUser(User $userEntity): bool {
+        foreach ($this->users as $user) {
+            if ($user->getUsername() === $userEntity) return true;
         }
         return false;
     }
+    /**
+     * Permet de savoir si l'idée est dislikée par l'utilisateur connecté
+     * @param User $userEntity
+     * @return bool
+     */
+    public function isDislikedByUser(User $userEntity): bool {
+        foreach ($this->dislike as $user) {
+            if ($user->getUsername() === $userEntity) return true;
+        }
+        return false;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getDislike(): Collection
+    {
+        return $this->dislike;
+    }
+
+    public function addDislike(User $dislike): self
+    {
+        if (!$this->dislike->contains($dislike)) {
+            $this->dislike[] = $dislike;
+        }
+
+        return $this;
+    }
+
+    public function removeDislike(User $dislike): self
+    {
+        $this->dislike->removeElement($dislike);
+
+        return $this;
+    }
+
+
 
 
 }

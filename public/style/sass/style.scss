@@ -47,7 +47,7 @@ body {
 @media only screen and (max-width : 1300px){
 
     .navMenu {
-        height: 200px;
+        height: 200px !important;
     }
 
     .navMenu--links_user {
@@ -58,8 +58,11 @@ body {
 /* menu et connexion mobile */
 @media only screen and (max-width : 700px){
 
+    .navMenu {
+        height: 130px !important;
+    }
+
     .navMenu--links {
-        background-color: red;
         display: none;
     }
 
@@ -498,7 +501,7 @@ input.hamburger-checkbox {
 @media only screen and (max-width : 1200px){
 
     .main--ideas_my-ideas {
-        width: 75%;
+        width: 75% !important;
     }
 }
 
@@ -506,7 +509,7 @@ input.hamburger-checkbox {
 @media only screen and (max-width : 900px){
 
     .main--ideas_my-ideas {
-        width: 90%;
+        width: 90% !important;
     }
 }
 
@@ -514,7 +517,7 @@ input.hamburger-checkbox {
 @media only screen and (max-width : 700px){
 
     .main--ideas_my-ideas {
-        width: 100%;
+        width: 100% !important;
     }
 }
 
@@ -566,7 +569,7 @@ input.hamburger-checkbox {
     .main--ideas_new,
     .main--ideas_show,
     .main--ideas_edit  {
-        width: 50%;
+        width: 50% !important;
     }
 
 
@@ -578,7 +581,7 @@ input.hamburger-checkbox {
     .main--ideas_new,
     .main--ideas_show,
     .main--ideas_edit  {
-        width: 70%;
+        width: 70% !important;
     }
 
 
@@ -590,7 +593,7 @@ input.hamburger-checkbox {
     .main--ideas_new,
     .main--ideas_show,
     .main--ideas_edit {
-        width: 90%;
+        width: 90% !important;
     }
 
 }

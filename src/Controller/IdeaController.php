@@ -49,56 +49,31 @@ class IdeaController extends AbstractController
      * Permet de liker et disliker une idée
      * @Route ("/{id}/like", name="idea_like")
      * @param Idea $idea
-     * @param IdeaLikeRepository $likeRepository
+     * @param EntityManagerInterface $manager
+     * @param IdeaRepository $ideaRepository
+     * @param Request $request
      * @return Response
      */
-    public function like(Idea $idea, EntityManagerInterface $manager, IdeaLikeRepository $likeRepository): Response {
+    public function like(Idea $idea, EntityManagerInterface $manager, IdeaRepository $ideaRepository, Request $request): Response {
 
-        $user = new User();
-        $user = $this->getUser();
-
-//      Si l'utilisateur n'est pas connecté (user=null)
-//      Retourner un message d'erreur
-        if (!$user) return $this->json([
-            'code' => 403,
-            'message' => 'Unauthorized'
-        ], 403);
-
-//      Si l'utilisateur a liké l'idée
-        if ($idea->isLikedByUser($user)) {
-            $like = $likeRepository->findOneBy([
-                'idea' => $idea,
-                'user' => $user
-            ]);
-
-//          Enlever le like
-            $manager->remove($like);
+        if($this->getUser()){
+            $user = $manager->getRepository('App:User')->findOneBy(['email' => $this->getUser()->getUsername()]);
+            $idea = $manager->getRepository(Idea::class)->findOneBy(['id' => $request->get('id') ]);
+            $user->addLike($idea);
+            foreach ($user->getLikes() as $like){
+                if($like === $idea){
+                    $user->removeDislike($idea);
+                    $manager->persist($user);
+                }
+            }
+            $manager->persist($user);
             $manager->flush();
-
-//          Retourner un message de succes
             return $this->json([
                 'code' => 200,
-                'message' => 'Like bien supprime',
-                'likes' => $likeRepository->count(['idea' => $idea])
+                'message' => 'Like bien ajouté',
             ], 200);
         }
-
-//      Ajouter un like
-        $like = new IdeaLike();
-        $like->setIdea($idea)
-             ->getUser($user);
-
-        $manager->persist($like);
-        $manager->flush();
-
-//      Retourner un message de succes
-        return $this->json([
-            'code' => 200,
-            'message' => 'Like bien ajoute',
-            'likes' => $likeRepository->count(['idea' => $idea]),
-            'user' => $user->getUsername()
-        ], 200);
-
+        return $this->redirectToRoute('app_login');
     }
 
 
