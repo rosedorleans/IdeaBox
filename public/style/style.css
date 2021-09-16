@@ -326,7 +326,7 @@ input.hamburger-checkbox {
 }
 
 .grid_item--text {
-  width: 70%;
+  width: 60%;
   margin-right: 20px;
 }
 
@@ -344,6 +344,41 @@ input.hamburger-checkbox {
 .grid_item--likes > a > img {
   height: 40px;
   width: auto;
+}
+
+.vote {
+  text-align: right;
+}
+
+.vote-bar {
+  height: 4px;
+  width: 150px;
+  background-color: #f2504b;
+  margin-bottom: 10px;
+}
+
+.vote-progress {
+  height: 4px;
+  width: 70%;
+  background-color: #63b96b;
+}
+
+.btn-vote {
+  display: inline-block;
+  background-color: transparent;
+  margin: 0 0 0 10px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.vote-like:hover {
+  color: #63b96b;
+}
+
+.vote-dislike:hover {
+  color: #f2504b;
 }
 
 .main--ideas_my-ideas > h1,
