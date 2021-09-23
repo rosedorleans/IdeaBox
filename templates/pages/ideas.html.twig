@@ -19,25 +19,19 @@
                         <div class="grid_item--likes">
 
                             {% if app.user and idea.isLikedByUser(app.user) %}
-                                <img src="{{ asset('images/like-fill.png') }}" alt="like-fill" height="40px"/>
+                                <div class="like-fill"></div>
                                 <p class="js-likes">{{ idea.users | length }}</p>
                                  <a href="{{ path('idea_dislike', {'id': idea.id}) }}">
-                                    <img src="{{ asset('images/dislike.png') }}" alt="dislike"
-                                         onmouseover="this.src='{{ asset('images/dislike-fill.png') }}'"
-                                         onmouseout="this.src='{{ asset('images/dislike.png') }}'"/>
+                                     <div class="dislike-hover"></div>
                                 </a>
                                 <p class="js-likes">{{ idea.dislike | length }}</p>
                             {% else %}
                                 <a href="{{ path('idea_like', {'id': idea.id})}}" class="js-like">
-                                    <img src="{{ asset('images/like.png') }}" alt="like"
-                                         onmouseover="this.src='{{ asset('images/like-fill.png') }}'"
-                                         onmouseout="this.src='{{ asset('images/like.png') }}'"/>
+                                    <div class="like-hover"></div>
                                 </a>
                                 <p class="js-likes">{{ idea.users | length }}</p>
                                 <a href="{{ path('idea_dislike', {'id': idea.id}) }}">
-                                    <img src="{{ asset('images/dislike.png') }}" alt="dislike"
-                                         onmouseover="this.src='{{ asset('images/dislike-fill.png') }}'"
-                                         onmouseout="this.src='{{ asset('images/dislike.png') }}'"/>
+                                    <div class="dislike-hover"></div>
                                 </a>
                                 <p class="js-likes">{{ idea.dislike | length }}</p>
                             {% endif %}

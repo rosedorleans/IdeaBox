@@ -341,44 +341,39 @@ input.hamburger-checkbox {
   font-weight: bold;
 }
 
-.grid_item--likes > a > img {
+.like-hover,
+.like-empty,
+.dislike-hover,
+.dislike-empty {
+  background-size: 40px;
   height: 40px;
-  width: auto;
+  width: 40px;
 }
 
-.vote {
-  text-align: right;
+.like-hover {
+  background-image: url("../../images/like.png");
 }
 
-.vote-bar {
-  height: 4px;
-  width: 150px;
-  background-color: #f2504b;
-  margin-bottom: 10px;
+.like-hover:hover {
+  background-image: url("../../images/like-fill.png");
+  transition: 0.2s;
 }
 
-.vote-progress {
-  height: 4px;
-  width: 70%;
-  background-color: #63b96b;
+.like-fill {
+  background-image: url("../../images/like-fill.png");
 }
 
-.btn-vote {
-  display: inline-block;
-  background-color: transparent;
-  margin: 0 0 0 10px;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  transition: color 0.2s;
+.dislike-hover {
+  background-image: url("../../images/dislike.png");
 }
 
-.vote-like:hover {
-  color: #63b96b;
+.dislike-hover:hover {
+  background-image: url("../../images/dislike-fill.png");
+  transition: 0.2s;
 }
 
-.vote-dislike:hover {
-  color: #f2504b;
+.dislike-fill {
+  background-image: url("../../images/dislike-fill.png");
 }
 
 .main--ideas_my-ideas > h1,
