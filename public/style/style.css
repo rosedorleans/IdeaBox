@@ -9,7 +9,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #7696b2;
+  background-color: #6561bb;
   border-radius: 20px;
 }
 
@@ -19,7 +19,7 @@ body {
 }
 
 .navMenu {
-  background-color: #7696b2;
+  background-color: #6561bb;
   height: 170px;
   width: 100%;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .navMenu--links_card:hover {
-  background-color: #6186a1;
+  background-color: #4c498e;
 }
 
 /* menu et connexion fenêtre */
@@ -268,7 +268,7 @@ input.hamburger-checkbox {
 
 .main--home_button {
   cursor: pointer;
-  background-color: #7696b2;
+  background-color: #6561bb;
   height: 100px;
   margin: 0 30px;
   padding: 30px;
@@ -277,7 +277,7 @@ input.hamburger-checkbox {
 }
 
 .main--home_button:hover {
-  background-color: #6186a1;
+  background-color: #4c498e;
 }
 
 .main--home_button > a {
@@ -316,7 +316,7 @@ input.hamburger-checkbox {
   height: 330px;
   width: 365px;
   justify-self: center;
-  border: 5px solid #7696b2;
+  border: 5px solid #6561bb;
   padding: 20px;
   font-size: 20px;
 }
@@ -454,7 +454,7 @@ input.hamburger-checkbox {
 }
 
 .btn-blue {
-  background: #7696b2;
+  background: #6561bb;
   color: #FFF;
   width: 200px;
   margin: 50px auto;
@@ -467,7 +467,7 @@ input.hamburger-checkbox {
 }
 
 .btn-blue:hover {
-  background: #6186a1;
+  background: #4c498e;
 }
 
 .btn-blue > a {

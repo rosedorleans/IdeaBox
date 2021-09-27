@@ -3,13 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Idea;
-use App\Entity\IdeaLike;
 use App\Entity\User;
 use App\Form\IdeaType;
-use App\Repository\IdeaLikeRepository;
 use App\Repository\IdeaRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,27 +19,16 @@ class IdeaController extends AbstractController
 {
 
     /**
-     * @var IdeaRepository
-     */
-    private $repository;
-
-    public function __construct(IdeaRepository $repository)
-    {
-
-        $this->repository = $repository;
-    }
-
-    /**
      * @Route("/", name="idea_index")
      * @return Response
      */
     public function index(IdeaRepository $ideaRepository, EntityManagerInterface $manager): Response
     {
 
-        $ideas = $this->repository->findAll();
+        $ideas = $ideaRepository->findAll();
         $count = count($ideas);
         if ($this->getUser()) {
-            $user = $manager->getRepository('App:User')->findOneBy(['email' => $this->getUser()->getUsername()]);
+            $user = $manager->getRepository(User::class)->findOneBy(['email' => $this->getUser()->getUsername()]);
         }
         return $this->render('pages/ideas.html.twig', [
             'ideas' => $ideas,
@@ -55,14 +41,13 @@ class IdeaController extends AbstractController
      * @Route ("/{id}/like", name="idea_like")
      * @param Idea $idea
      * @param EntityManagerInterface $manager
-     * @param IdeaRepository $ideaRepository
      * @param Request $request
      * @return Response
      */
-    public function like(Idea $idea, EntityManagerInterface $manager, IdeaRepository $ideaRepository, Request $request): Response {
+    public function like(Idea $idea, EntityManagerInterface $manager, Request $request): Response {
 
         if($this->getUser()){
-            $user = $manager->getRepository('App:User')->findOneBy(['email' => $this->getUser()->getUsername()]);
+            $user = $manager->getRepository(User::class)->findOneBy(['email' => $this->getUser()->getUsername()]);
             $idea = $manager->getRepository(Idea::class)->findOneBy(['id' => $request->get('id') ]);
             $user->addLike($idea);
             foreach ($user->getLikes() as $like){
@@ -84,18 +69,15 @@ class IdeaController extends AbstractController
     }
 
     /**
-     * @param Idea $idea
      * @param EntityManagerInterface $manager
-     * @param IdeaRepository $ideaRepository
      * @param Request $request
      * @return Response
      * @Route ("/{id}/dislike", name="idea_dislike")
      */
-    public function dislike(Idea $idea, EntityManagerInterface $manager, IdeaRepository $ideaRepository, Request $request): Response
+    public function dislike(EntityManagerInterface $manager, Request $request): Response
     {
         if($this->getUser()){
-            $user = $manager->getRepository('App:User')->findOneBy(['email' => $this->getUser()->getUsername()]);
-
+            $user = $manager->getRepository(User::class)->findOneBy(['email' => $this->getUser()->getUsername()]);
             $idea = $manager->getRepository(Idea::class)->findOneBy(['id' => $request->get('id') ]);
             $user->addDislike($idea);
             foreach ($user->getDislike() as $dislike){
@@ -120,10 +102,10 @@ class IdeaController extends AbstractController
     /**
      * @Route("/index", name="my_ideas", methods={"GET"})
      */
-    public function index2(IdeaRepository $ideaRepository, EntityManagerInterface $entityManager): Response
+    public function index2(EntityManagerInterface $manager): Response
     {
-        $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $this->getUser()->getEmail()]);
-        $ideas = $entityManager->getRepository(Idea::class)->findBy(['author' => $user]);
+        $user = $manager->getRepository(User::class)->findOneBy(['email' => $this->getUser()->getEmail()]);
+        $ideas = $manager->getRepository(Idea::class)->findBy(['author' => $user]);
         return $this->render('idea/index.html.twig', [
             'ideas' => $ideas,
         ]);
@@ -132,16 +114,15 @@ class IdeaController extends AbstractController
     /**
      * @Route("/new", name="idea_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(EntityManagerInterface $manager, Request $request): Response
     {
         $idea = new Idea();
         $form = $this->createForm(IdeaType::class, $idea);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($idea);
-            $entityManager->flush();
+            $manager->persist($idea);
+            $manager->flush();
 
             return $this->redirectToRoute('idea_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -185,12 +166,11 @@ class IdeaController extends AbstractController
     /**
      * @Route("/{id}", name="idea_delete", methods={"POST"})
      */
-    public function delete(Request $request, Idea $idea): Response
+    public function delete(EntityManagerInterface $manager, Request $request, Idea $idea): Response
     {
         if ($this->isCsrfTokenValid('delete' . $idea->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($idea);
-            $entityManager->flush();
+            $manager->remove($idea);
+            $manager->flush();
         }
 
         return $this->redirectToRoute('my_ideas', [], Response::HTTP_SEE_OTHER);
